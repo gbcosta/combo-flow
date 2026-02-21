@@ -1,0 +1,47 @@
+import { ReactFlow, Background, Controls, MiniMap, Panel } from "@xyflow/react";
+import "@xyflow/react/dist/style.css";
+import { Trash2 } from "lucide-react";
+import { useRef } from "react";
+
+const FlowCanvas = () => {
+  const reactFlowWrapper = useRef<HTMLDivElement>(null);
+  return (
+    <div className="h-screen grow" ref={reactFlowWrapper}>
+      <ReactFlow colorMode={"dark"} fitView>
+        <Background />
+        <Controls position="bottom-left" />
+        <Panel
+          position="top-left"
+          className="backdrop-blur bg-zinc-900/80 flex flex-col border border-zinc-800 p-4
+                    rounded-md uppercase font-black"
+        >
+          <h1 className="text-xl flex gap-2 items-center font-inter italic">
+            <span className="text-emerald-500">combo</span>
+            <span className="text-zinc-100">flow</span>
+          </h1>
+          <p className="font-inter text-zinc-500 text-xs font-black mt-1 tracking-widest">
+            Fighting Game Strategy Builder
+          </p>
+        </Panel>
+        <Panel position="top-right" className="flex gap-2">
+          <button
+            className="flex bg-emerald-600 text-zinc-100 py-2 px-4 gap-2 text-sm font-bold rounded-lg
+                        items-center cursor-pointer hover:bg-emerald-500 transition-all"
+          >
+            <Trash2 size={16} />
+            Export PNG
+          </button>
+          <button
+            className="flex bg-zinc-800 text-zinc-100 py-2 px-4 gap-2 text-sm font-bold rounded-lg
+                        items-center cursor-pointer hover:bg-rose-600 transition-all"
+          >
+            <Trash2 size={16} />
+            Clear
+          </button>
+        </Panel>
+      </ReactFlow>
+    </div>
+  );
+};
+
+export default FlowCanvas;

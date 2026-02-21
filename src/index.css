@@ -5,10 +5,6 @@
   --font-inter: "Inter", sans-serif;
 }
 
-html {
-  background: #111111;
-}
-
 ::-webkit-scrollbar {
   width: 6px;
 }
