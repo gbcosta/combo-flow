@@ -1,4 +1,4 @@
-import { ReactFlow, Background, Controls, MiniMap, Panel } from "@xyflow/react";
+import { ReactFlow, Background, Controls, Panel } from "@xyflow/react";
 import "@xyflow/react/dist/style.css";
 import { Trash2 } from "lucide-react";
 import { useRef } from "react";

@@ -5,16 +5,31 @@ import { THIRD_STRIKE_MOVES } from "../data/moves/thirdstrike";
 import type { DragEvent, ReactNode } from "react";
 import type { Move } from "../data/moves/types";
 
+const onDragStart = (
+  event: DragEvent,
+  nodeType: string,
+  label: string,
+  input?: string,
+) => {
+  event.dataTransfer.setData(
+    "application/reactflow",
+    JSON.stringify({ nodeType, label, input }),
+  );
+  event.dataTransfer.effectAllowed = "move";
+};
+
 const Category = ({
   name,
   icon,
   items,
   hoverBorderColor,
+  nodeType,
 }: {
   name: string;
   icon: ReactNode;
   items: string[];
   hoverBorderColor: string;
+  nodeType: string;
 }) => {
   return (
     <>
@@ -23,15 +38,16 @@ const Category = ({
         {name}
       </h2>
       <div className="flex flex-col gap-2">
-        {items.map((e) => {
+        {items.map((item) => {
           return (
             <div
-              key={e}
+              key={item}
               draggable
               className={`bg-zinc-900 border border-zinc-800 text-zinc-200 text-sm py-2 px-3 rounded-sm
-                                hover:${hoverBorderColor} transition-colors cursor-grab`}
+                                ${hoverBorderColor} transition-colors cursor-grab`}
+              onDragStart={(e) => onDragStart(e, nodeType, item)}
             >
-              {e}
+              {item}
             </div>
           );
         })}
@@ -80,14 +96,16 @@ const Sidebar = () => {
           name="situations"
           icon={<Target size={14} />}
           items={THIRD_STRIKE_SITUATIONS}
-          hoverBorderColor="border-emerald-500/50"
+          hoverBorderColor="hover:border-emerald-500/50"
+          nodeType="situation"
         />
         <CategoryMoves name="Moves" icon={<Sword size={14} />} />
         <Category
           name="conditions"
           icon={<HelpCircle size={14} />}
           items={THIRD_STRIKE_CONDITIONS}
-          hoverBorderColor="border-amber-500/50"
+          hoverBorderColor="hover:border-amber-500/50"
+          nodeType="condition"
         />
       </div>
       <div className="text-xs flex flex-col p-2 border border-zinc-800 bg-zinc-900/50 rounded-sm mt-6 gap-2">
