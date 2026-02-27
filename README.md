@@ -31,28 +31,26 @@ To run or build this project, you need to have the following installed:
    ```bash
    git clone [https://github.com/your-username/combo-flow.git](https://github.com/your-username/combo-flow.git)
    cd combo-flow
+   ```
+2. **Install dependencies**
+   ```bash
+    npm install
+   ```
+3. **Run in Development mode**
 
+    ```Bash
+    npm run dev
+    ```
 
-Install dependencies
-Bash
-npm install
+**Build the Application**
 
+    ```Bash
+    npm run build
+    ```
 
-Run in Development mode
-Bash
-npm run dev
+## 📂 Project Structure
 
-
-Build the Application
-Bash
-npm run build
-
-
-📂 Project Structure
-
-Plaintext
-
-
+```text
 .
 ├── src/                # Application source code
 │   ├── components/     # UI components and Custom Nodes for React Flow
@@ -63,16 +61,20 @@ Plaintext
 ├── eslint.config.js    # Linting rules and standards
 ├── package.json        # Project dependencies and scripts
 └── vite.config.js      # Vite configuration
+```
+## 🤝 Contributing
 
-
-🤝 Contributing
 Contributions are what make the open-source community such an amazing place to learn, inspire, and create.
-Fork the Project
-Create your Feature Branch (git checkout -b feature/AmazingFeature)
-Commit your Changes (git commit -m 'Add some AmazingFeature')
-Push to the Branch (git push origin feature/AmazingFeature)
-Open a Pull Request
-📄 License
-Distributed under the MIT License. See LICENSE for more information.
-Developed with ❤️ by Gabriel Santos
 
+1. **Fork** the Project
+2. **Create** your Feature Branch (`git checkout -b feature/AmazingFeature`)
+3. **Commit** your Changes (`git commit -m 'Add some AmazingFeature'`)
+4. **Push** to the Branch (`git push origin feature/AmazingFeature`)
+5. **Open** a Pull Request
+
+## 📄 License
+
+Distributed under the MIT License. See `LICENSE` for more information.
+
+---
+**Developed with ❤️ by Gabriel Santos**
