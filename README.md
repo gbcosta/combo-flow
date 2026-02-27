@@ -1,73 +1,78 @@
-# React + TypeScript + Vite
+# Combo Flow 🚀
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Combo Flow** is a dynamic web application built with React, Vite, and React Flow. It provides an intuitive, node-based interface to visualize, create, and manage complex movement sequences or "combos" in a flow-chart style.
 
-Currently, two official plugins are available:
+## ✨ Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+* **Node-Based Canvas:** Leverages **React Flow** to create a highly interactive and draggable interface for mapping movements.
+* **Custom Move Logic:** Define specific data structures for different types of moves and transitions found in `src/data/moves`.
 
-## React Compiler
+## 🛠️ Tech Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+* **Frontend:** [React.js](https://react.dev/)
+* **Flow Engine:** [React Flow](https://reactflow.dev/)
+* **Build Tool:** [Vite](https://vitejs.dev/)
+* **Language:** JavaScript / React
+* **Linting:** [ESLint](https://eslint.org/)
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🚀 Getting Started
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Prerequisites
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+To run or build this project, you need to have the following installed:
+1.  **Node.js** (LTS version recommended)
+2.  **npm** or **yarn**
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### Installation & Setup
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+1. **Clone the repository**
+   ```bash
+   git clone [https://github.com/your-username/combo-flow.git](https://github.com/your-username/combo-flow.git)
+   cd combo-flow
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Install dependencies
+Bash
+npm install
+
+
+Run in Development mode
+Bash
+npm run dev
+
+
+Build the Application
+Bash
+npm run build
+
+
+📂 Project Structure
+
+Plaintext
+
+
+.
+├── src/                # Application source code
+│   ├── components/     # UI components and Custom Nodes for React Flow
+│   ├── data/           # Movement definitions and logic (moves folder)
+│   ├── App.jsx         # Main application logic and Flow provider
+│   └── main.jsx        # React entry point
+├── public/             # Static assets (icons, images)
+├── eslint.config.js    # Linting rules and standards
+├── package.json        # Project dependencies and scripts
+└── vite.config.js      # Vite configuration
+
+
+🤝 Contributing
+Contributions are what make the open-source community such an amazing place to learn, inspire, and create.
+Fork the Project
+Create your Feature Branch (git checkout -b feature/AmazingFeature)
+Commit your Changes (git commit -m 'Add some AmazingFeature')
+Push to the Branch (git push origin feature/AmazingFeature)
+Open a Pull Request
+📄 License
+Distributed under the MIT License. See LICENSE for more information.
+Developed with ❤️ by Gabriel Santos
+
