@@ -17,6 +17,14 @@
 
 ---
 
+## 🚧 Under Construction
+
+The project is currently in active development. The following features are planned for future updates:
+
+* **Drag and Drop:** Ability to drag moves from a sidebar directly into the canvas.
+* **Download Image:** Export your combo flows as high-quality images (PNG/SVG).
+* **Edge Connection:** Enhanced logic for connecting move nodes and defining transition requirements.
+
 ## 🚀 Getting Started
 
 ### Prerequisites
@@ -42,7 +50,7 @@ To run or build this project, you need to have the following installed:
     npm run dev
     ```
 
-**Build the Application**
+4. **Build the Application**
 
     ```Bash
     npm run build
