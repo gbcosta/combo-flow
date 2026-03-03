@@ -21,3 +21,13 @@
 ::-webkit-scrollbar-thumb:hover {
   background: rgba(255, 255, 255, 0.2);
 }
+
+/* React Flow Overrides */
+
+.react-flow__edge-path {
+  @apply !stroke-zinc-700 !stroke-[3px];
+}
+
+.react-flow__edge.selected .react-flow__edge-path {
+  @apply !stroke-zinc-500;
+}

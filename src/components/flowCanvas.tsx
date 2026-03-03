@@ -7,10 +7,13 @@ import {
   type Node,
   useNodesState,
   useEdgesState,
+  type Connection,
+  addEdge,
+  reconnectEdge,
 } from "@xyflow/react";
 import "@xyflow/react/dist/style.css";
 import { Trash2 } from "lucide-react";
-import { useRef } from "react";
+import { useCallback, useRef, useState, type DragEvent } from "react";
 import { CondiditionNode, SituationNode, MoveNode } from "./nodes";
 
 const nodeTypes = {
@@ -19,36 +22,77 @@ const nodeTypes = {
   move: MoveNode,
 };
 
-const initialNodes: Node[] = [
-  {
-    id: "1",
-    type: "condition",
-    data: { label: "Opponent in Corner" },
-    position: { x: 250, y: 50 },
-  },
-  {
-    id: "2",
-    type: "situation",
-    data: { label: "Opponent in Corner" },
-    position: { x: 500, y: 50 },
-  },
-  {
-    id: "3",
-    type: "move",
-    data: { label: "Opponent in Corner", input: "↓↙← + K" },
-    position: { x: 700, y: 50 },
-  },
-];
-
+const initialNodes: Node[] = [];
 const initialEdges: Edge[] = [];
+
 const FlowCanvas = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
+  const [reactFlowInstance, setReactFlowInstance] = useState<any>(null);
+  const edgeReconnectSuccessful = useRef(true);
+
+  const onDragOver = useCallback((e: DragEvent) => {
+    e.preventDefault();
+    if (!e.dataTransfer) return;
+    e.dataTransfer.dropEffect = "move";
+  }, []);
+
+  const onDrop = useCallback((e: DragEvent) => {
+    e.preventDefault();
+    const data = e.dataTransfer.getData("application/reactflow");
+    if (!data) return;
+
+    const { nodeType, label, input } = JSON.parse(data);
+    if (!nodeTypes) return;
+
+    const position = reactFlowInstance.screenToFlowPosition({
+      x: e.clientX,
+      y: e.clientY,
+    });
+
+    const newNode = {
+      id: `node_${Math.random().toString(36).substring(2, 12)}`,
+      type: nodeType,
+      data: { label, input },
+      position,
+    };
+    setNodes((nodes) => nodes.concat(newNode));
+  }, []);
+
+  const onConnect = useCallback((params: Connection) => {
+    if (params.source == params.target) return;
+    const edge: Edge = {
+      ...params,
+      id: `e-${params.source}-${params.target}-${params.sourceHandle || ""}`,
+    };
+    setEdges((eds) => addEdge(edge, eds));
+    console.log(edges);
+  }, []);
 
   const clearCanvas = () => {
     setNodes([]);
     setEdges([]);
   };
+
+  const onReconnectStart = useCallback(() => {
+    edgeReconnectSuccessful.current = false;
+  }, []);
+
+  const onReconnect = useCallback(
+    (oldEdge: Edge, newConnection: Connection) => {
+      edgeReconnectSuccessful.current = true;
+      oldEdge.id = `e-${newConnection.source}-${newConnection.target}-${newConnection.sourceHandle || ""}`;
+      setEdges((els) => reconnectEdge(oldEdge, newConnection, els));
+    },
+    [],
+  );
+  const onReconnectEnd = useCallback((_: any, edge: Edge) => {
+    if (!edgeReconnectSuccessful.current) {
+      setEdges((eds) => eds.filter((e) => e.id !== edge.id));
+    }
+
+    edgeReconnectSuccessful.current = true;
+  }, []);
 
   const reactFlowWrapper = useRef<HTMLDivElement>(null);
   return (
@@ -61,6 +105,13 @@ const FlowCanvas = () => {
         edges={edges}
         onEdgesChange={onEdgesChange}
         nodeTypes={nodeTypes}
+        onDragOver={onDragOver}
+        onDrop={onDrop}
+        onInit={setReactFlowInstance}
+        onConnect={onConnect}
+        onReconnectStart={onReconnectStart}
+        onReconnect={onReconnect}
+        onReconnectEnd={onReconnectEnd}
       >
         <Background />
         <Controls position="bottom-left" />
