@@ -11,10 +11,13 @@ import {
   type Edge,
   type Node,
   type Connection,
+  getNodesBounds,
+  getViewportForBounds,
 } from "@xyflow/react";
 import { useCallback, useRef, useState, type DragEvent } from "react";
 import { CondiditionNode, SituationNode, MoveNode } from "./nodes";
-import { Trash2 } from "lucide-react";
+import { Download, Trash2 } from "lucide-react";
+import { toPng } from "html-to-image";
 import "@xyflow/react/dist/style.css";
 
 const nodeTypes = {
@@ -30,8 +33,45 @@ const FlowCanvas = () => {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
   const [reactFlowInstance, setReactFlowInstance] = useState<any>(null);
+  const reactFlowWrapper = useRef<HTMLDivElement>(null);
 
   const edgeReconnectSuccessful = useRef(true);
+
+  const exportImage = useCallback(() => {
+    const imageWidth = 1024;
+    const imageHeight = 768;
+    if (reactFlowWrapper.current === null) return;
+    const nodesBounds = getNodesBounds(reactFlowInstance.getNodes());
+    const viewport = getViewportForBounds(
+      nodesBounds,
+      imageWidth,
+      imageHeight,
+      0.5,
+      2,
+      1,
+    );
+
+    const flowViewportElement = reactFlowWrapper.current.querySelector(
+      ".react-flow__viewport",
+    ) as HTMLElement;
+
+    toPng(flowViewportElement, {
+      backgroundColor: "#09090b",
+      width: imageWidth,
+      height: imageHeight,
+      style: {
+        width: imageWidth.toString(),
+        height: imageHeight.toString(),
+        transform: `translate(${viewport.x}px, ${viewport.y}px) scale(${viewport.zoom})`,
+      },
+      pixelRatio: 3,
+    }).then((dataUrl) => {
+      const link = document.createElement("a");
+      link.download = "fighting-game-flowchart.png";
+      link.href = dataUrl;
+      link.click();
+    });
+  }, [reactFlowInstance]);
 
   const onDragOver = useCallback((e: DragEvent) => {
     e.preventDefault();
@@ -71,7 +111,6 @@ const FlowCanvas = () => {
       id: `e-${params.source}-${params.target}-${params.sourceHandle || ""}`,
     };
     setEdges((eds) => addEdge(edge, eds));
-    console.log(edges);
   }, []);
 
   const clearCanvas = () => {
@@ -100,11 +139,11 @@ const FlowCanvas = () => {
     edgeReconnectSuccessful.current = true;
   }, []);
 
-  const reactFlowWrapper = useRef<HTMLDivElement>(null);
   return (
-    <div className="h-screen grow" ref={reactFlowWrapper}>
+    <div className="h-screen grow font-inter">
       <ReactFlowProvider>
         <ReactFlow
+          ref={reactFlowWrapper}
           colorMode={"dark"}
           fitView
           nodes={nodes}
@@ -138,9 +177,10 @@ const FlowCanvas = () => {
           <Panel position="top-right" className="flex gap-2">
             <button
               className="flex bg-emerald-600 text-zinc-100 py-2 px-4 gap-2 text-sm font-bold rounded-lg
-                        items-center cursor-pointer hover:bg-emerald-500 transition-all"
+                            items-center cursor-pointer hover:bg-emerald-500 transition-all"
+              onClick={exportImage}
             >
-              <Trash2 size={16} />
+              <Download size={16} />
               Export PNG
             </button>
             <button
