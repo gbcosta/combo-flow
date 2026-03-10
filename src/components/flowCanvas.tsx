@@ -64,7 +64,6 @@ const FlowCanvas = () => {
         height: imageHeight.toString(),
         transform: `translate(${viewport.x}px, ${viewport.y}px) scale(${viewport.zoom})`,
       },
-      pixelRatio: 3,
     }).then((dataUrl) => {
       const link = document.createElement("a");
       link.download = "fighting-game-flowchart.png";

@@ -22,7 +22,6 @@
 The project is currently in active development. The following features are planned for future updates:
 
 * **Download Image:** Change characters to open new nodes to use.
-* **Download Image:** Export your combo flows as high-quality images (PNG/SVG).
 
 ## 🚀 Getting Started
 
