@@ -6,7 +6,7 @@ import { memo } from "react";
 export const SituationNode = memo(({ data }: NodeProps) => {
   return (
     <div
-      className="border-2 border-emerald-400/70 py-2 px-4 rounded-md bg-zinc-900 min-w-37.5
+      className="outline-2 outline-emerald-400 py-2 px-4 rounded-md bg-zinc-900 min-w-37.5
             flex flex-col"
     >
       <span
@@ -36,7 +36,7 @@ export const SituationNode = memo(({ data }: NodeProps) => {
 export const CondiditionNode = memo(({ data }: NodeProps) => {
   return (
     <div
-      className="border-2 border-amber-400 py-3 px-4 rounded-full bg-zinc-900 min-w-30
+      className="outline-2 outline-amber-400 py-3 px-4 rounded-full bg-zinc-900 min-w-30
             flex flex-col aspect-square justify-center items-center gap-1"
     >
       <HelpCircle size={14} className="text-amber-400" />
@@ -95,7 +95,7 @@ export const CondiditionNode = memo(({ data }: NodeProps) => {
 export const MoveNode = memo(({ data }: NodeProps) => {
   return (
     <div
-      className="border-2 border-violet-500 py-2 px-4 rounded-md bg-zinc-900 min-w-37.5
+      className="outline-2 outline-violet-500 py-2 px-4 rounded-md bg-zinc-900 min-w-37.5
             flex flex-col"
     >
       <span
