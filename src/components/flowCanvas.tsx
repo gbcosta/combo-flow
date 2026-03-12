@@ -38,13 +38,21 @@ const FlowCanvas = () => {
   const edgeReconnectSuccessful = useRef(true);
 
   const exportImage = useCallback(() => {
-    //const imageWidth = 1024;
-    //const imageHeight = 768;
-    if (reactFlowWrapper.current === null) return;
-    const nodesBounds = getNodesBounds(reactFlowInstance.getNodes());
+    setNodes((nds) => {
+      return nds.map((node) => {
+        if (node.selected == true) {
+          return { ...node, selected: false };
+        }
+        return node;
+      });
+    });
 
+    if (reactFlowWrapper.current === null) return;
+
+    const nodesBounds = getNodesBounds(reactFlowInstance.getNodes());
     const imageWidth = nodesBounds.width;
     const imageHeight = nodesBounds.height;
+
     const viewport = getViewportForBounds(
       nodesBounds,
       imageWidth,
@@ -69,13 +77,12 @@ const FlowCanvas = () => {
         transform: `translate(${viewport.x}px, ${viewport.y}px) scale(${viewport.zoom})`,
       },
     }).then((dataUrl) => {
-      console.log(viewport);
       const link = document.createElement("a");
       link.download = "fighting-game-flowchart.png";
       link.href = dataUrl;
       link.click();
     });
-  }, [reactFlowInstance]);
+  }, [reactFlowInstance, nodes]);
 
   const onDragOver = useCallback((e: DragEvent) => {
     e.preventDefault();
