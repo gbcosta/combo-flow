@@ -38,10 +38,13 @@ const FlowCanvas = () => {
   const edgeReconnectSuccessful = useRef(true);
 
   const exportImage = useCallback(() => {
-    const imageWidth = 1024;
-    const imageHeight = 768;
+    //const imageWidth = 1024;
+    //const imageHeight = 768;
     if (reactFlowWrapper.current === null) return;
     const nodesBounds = getNodesBounds(reactFlowInstance.getNodes());
+
+    const imageWidth = nodesBounds.width;
+    const imageHeight = nodesBounds.height;
     const viewport = getViewportForBounds(
       nodesBounds,
       imageWidth,
@@ -56,15 +59,17 @@ const FlowCanvas = () => {
     ) as HTMLElement;
 
     toPng(flowViewportElement, {
-      backgroundColor: "#09090b",
+      backgroundColor: "#1a365d",
       width: imageWidth,
       height: imageHeight,
+      pixelRatio: 3,
       style: {
         width: imageWidth.toString(),
         height: imageHeight.toString(),
         transform: `translate(${viewport.x}px, ${viewport.y}px) scale(${viewport.zoom})`,
       },
     }).then((dataUrl) => {
+      console.log(viewport);
       const link = document.createElement("a");
       link.download = "fighting-game-flowchart.png";
       link.href = dataUrl;
@@ -137,11 +142,12 @@ const FlowCanvas = () => {
 
     edgeReconnectSuccessful.current = true;
   }, []);
-
+  const defaultViewport = { x: 0, y: 0, zoom: 1 };
   return (
     <div className="h-screen grow font-inter">
       <ReactFlowProvider>
         <ReactFlow
+          defaultViewport={defaultViewport}
           ref={reactFlowWrapper}
           colorMode={"dark"}
           fitView
