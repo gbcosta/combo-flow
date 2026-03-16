@@ -59,7 +59,7 @@ const FlowCanvas = () => {
       imageHeight,
       0.5,
       2,
-      1,
+      0.5,
     );
 
     const flowViewportElement = reactFlowWrapper.current.querySelector(
@@ -187,6 +187,14 @@ const FlowCanvas = () => {
             </p>
           </Panel>
           <Panel position="top-right" className="flex gap-2">
+            <select
+              id="cars"
+              className="flex bg-sky-600 text-zinc-100 py-2 px-4 gap-2 text-sm font-bold rounded-lg
+                        items-center cursor-pointer transition-all"
+            >
+              <option value="Ryu">Ryu</option>
+              <option value="Ken">Ken</option>
+            </select>
             <button
               className="flex bg-emerald-600 text-zinc-100 py-2 px-4 gap-2 text-sm font-bold rounded-lg
                             items-center cursor-pointer hover:bg-emerald-500 transition-all"

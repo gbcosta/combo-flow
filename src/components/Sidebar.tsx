@@ -63,24 +63,33 @@ const CategoryMoves = ({ name, icon }: { name: string; icon: ReactNode }) => {
         {icon}
         {name}
       </h2>
-      <div className="flex flex-col gap-2">
-        {THIRD_STRIKE_MOVES.ryu.map((item: Move) => {
-          return (
-            <div
-              key={item.name}
-              draggable
-              className="bg-zinc-900 border border-zinc-800 text-zinc-200 text-sm py-2 px-3 rounded-sm
+      {Object.entries(THIRD_STRIKE_MOVES.ryu).map((category) => {
+        return (
+          <div className="flex flex-col gap-2" key={category[0]}>
+            <h3 className="font-bold tracking-[0.2em] text-zinc-500 flex items-center gap-1 uppercase ml-2">
+              {category[0]}
+            </h3>
+            {category[1].map((move: Move, key: string) => {
+              return (
+                <div
+                  key={key}
+                  draggable
+                  className="bg-zinc-900 border border-zinc-800 text-zinc-200 text-sm py-2 px-3 rounded-sm
                                 hover:border-violet-500/50 transition-colors cursor-grab flex flex-col"
-              onDragStart={(e) => onDragStart(e, "move", item.name, item.input)}
-            >
-              <span>{item.name}</span>
-              <span className="text-sm text-zinc-500 font-mono">
-                {item.input}
-              </span>
-            </div>
-          );
-        })}
-      </div>
+                  onDragStart={(e) =>
+                    onDragStart(e, "move", move.name, move.input)
+                  }
+                >
+                  <span>{move.name}</span>
+                  <span className="text-sm text-zinc-500 font-mono">
+                    {move.input}
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+        );
+      })}
     </>
   );
 };

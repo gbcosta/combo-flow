@@ -1,7 +1,9 @@
+import { useState } from "react";
 import FlowCanvas from "./components/flowCanvas";
 import Sidebar from "./components/Sidebar";
 
 function App() {
+  const [character, setCharacter] = useState("Ryu");
   return (
     <div className="h-screen w-full font-inter flex overflow-hidden">
       <Sidebar />

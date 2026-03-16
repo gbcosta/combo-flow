@@ -1,24 +1,226 @@
-import type { Move } from "../types";
+import type { MoveList } from "../types";
 
-export const RYU_MOVES: Move[] = [
-  { id: "lp", name: "Light Punch", input: "LP", type: "normal" },
-  { id: "mp", name: "Medium Punch", input: "MP", type: "normal" },
-  { id: "hp", name: "Heavy Punch", input: "HP", type: "normal" },
-  { id: "lk", name: "Light Kick", input: "LK", type: "normal" },
-  { id: "mk", name: "Medium Kick", input: "MK", type: "normal" },
-  { id: "hk", name: "Heavy Kick", input: "HK", type: "normal" },
-  { id: "hadoken", name: "Hadoken", input: "↓↘→ + P", type: "special" },
-  { id: "shoryuken", name: "Shoryuken", input: "→↓↘ + P", type: "special" },
-  {
-    id: "tatsumaki",
-    name: "Tatsumaki Senpukyaku",
-    input: "↓↙← + K",
-    type: "special",
-  },
-  {
-    id: "denjin_hadoken",
-    name: "Denjin Hadoken",
-    input: "↓↘→↓↘→ + P",
-    type: "super",
-  },
-];
+export const RYU_MOVES: MoveList = {
+  "stand normals": [
+    { id: "clp", name: "Close Light Punch", input: "c.LP", type: "normal" },
+    { id: "flp", name: "Far Light Punch", input: "f.LP", type: "normal" },
+    { id: "cmp", name: "Close Medium Punch", input: "c.MP", type: "normal" },
+    { id: "fmp", name: "Far Medium Punch", input: "f.MP", type: "normal" },
+    { id: "chp", name: "Close Heavy Punch", input: "c.HP", type: "normal" },
+    { id: "fhp", name: "Far Heavy Punch", input: "f.HP", type: "normal" },
+    { id: "lk", name: "Light Kick", input: "LK", type: "normal" },
+    { id: "cmk", name: "Close Medium Kick", input: "c.MK", type: "normal" },
+    { id: "fmk", name: "Far Medium Kick", input: "f.MK", type: "normal" },
+    { id: "hk", name: "Heavy Kick", input: "HK", type: "normal" },
+  ],
+  "crouch normals": [
+    { id: "2lp", name: "Crouch Light Punch", input: "2LP", type: "normal" },
+    { id: "2mp", name: "Crouch Medium Punch", input: "2MP", type: "normal" },
+    { id: "2hp", name: "Crouch Heavy Punch", input: "2HP", type: "normal" },
+    { id: "2lk", name: "Crouch Light Kick", input: "2LK", type: "normal" },
+    { id: "2mk", name: "Crouch Medium Kick", input: "2MK", type: "normal" },
+    { id: "2hk", name: "Crouch Heavy Kick", input: "2HK", type: "normal" },
+  ],
+  "jump normals": [
+    { id: "jlp", name: "jump Light Punch", input: "8LP", type: "normal" },
+    { id: "jmp", name: "jump Medium Punch", input: "8MP", type: "normal" },
+    {
+      id: "9mp",
+      name: "forward jump Medium Punch",
+      input: "9MP",
+      type: "normal",
+    },
+    { id: "jhp", name: "jump Heavy Punch", input: "8HP", type: "normal" },
+    {
+      id: "9hp",
+      name: "forward jump Heavy Punch",
+      input: "9HP",
+      type: "normal",
+    },
+    { id: "jlk", name: "jump Light Kick", input: "8LK", type: "normal" },
+    {
+      id: "9lk",
+      name: "forward jump Light Kick",
+      input: "9LK",
+      type: "normal",
+    },
+    { id: "jmk", name: "jump Medium Kick", input: "8MK", type: "normal" },
+    {
+      id: "9mk",
+      name: "forward jump Medium Kick",
+      input: "9MK",
+      type: "normal",
+    },
+    { id: "jhk", name: "jump Heavy Kick", input: "8HK", type: "normal" },
+    {
+      id: "9hk",
+      name: "forward jump Heavy Kick",
+      input: "9HK",
+      type: "normal",
+    },
+  ],
+  universal: [
+    { id: "seoi", name: "Seoi Nage", input: "LP + LK", type: "special" },
+    { id: "tomoe", name: "Tomoe Nage", input: "4LP + LK", type: "special" },
+    {
+      id: "uoh",
+      name: "Universal Overhead",
+      input: "MP + MK",
+      type: "special",
+    },
+    { id: "tomoe", name: "Taunt", input: "HP + HK", type: "special" },
+  ],
+  "target combos": [
+    { id: "hp_hk", name: "Target Combo", input: "f.5HP>5HK", type: "normal" },
+  ],
+  "command normals": [
+    { id: "sakotsu_wari", name: "Sakotsu Wari", input: "6mp", type: "normal" },
+    {
+      id: "kyuubi_kudaki",
+      name: "Kyuubi Kudaki",
+      input: "6hp",
+      type: "normal",
+    },
+  ],
+  "special moves": [
+    { id: "hadoken", name: "Hadoken", input: "236P", type: "special" },
+    { id: "hadoken", name: "Light Hadoken", input: "236LP", type: "special" },
+    { id: "hadoken", name: "Medium Hadoken", input: "236MP", type: "special" },
+    { id: "hadoken", name: "Heavy Hadoken", input: "236HP", type: "special" },
+    { id: "hadoken", name: "EX Hadoken", input: "236EXP", type: "special" },
+
+    { id: "shoryuken", name: "Shoryuken", input: "623P", type: "special" },
+    {
+      id: "shoryuken",
+      name: "Light Shoryuken",
+      input: "623LP",
+      type: "special",
+    },
+    {
+      id: "shoryuken",
+      name: "Medium Shoryuken",
+      input: "623MP",
+      type: "special",
+    },
+    {
+      id: "shoryuken",
+      name: "Heavy Shoryuken",
+      input: "623HP",
+      type: "special",
+    },
+    { id: "shoryuken", name: "EX Shoryuken", input: "623EXP", type: "special" },
+
+    {
+      id: "tatsumaki",
+      name: "Tatsumaki Senpukyaku",
+      input: "214K",
+      type: "special",
+    },
+    {
+      id: "tatsumaki",
+      name: "Light Tatsumaki Senpukyaku",
+      input: "214LK",
+      type: "special",
+    },
+    {
+      id: "tatsumaki",
+      name: "Medium Tatsumaki Senpukyaku",
+      input: "214MK",
+      type: "special",
+    },
+    {
+      id: "tatsumaki",
+      name: "Heavy Tatsumaki Senpukyaku",
+      input: "214HK",
+      type: "special",
+    },
+    {
+      id: "tatsumaki",
+      name: "EX Tatsumaki Senpukyaku",
+      input: "214EXK",
+      type: "special",
+    },
+
+    {
+      id: "jtatsumaki",
+      name: "Air Tatsumaki Senpukyaku",
+      input: "j.214K",
+      type: "special",
+    },
+    {
+      id: "jtatsumaki",
+      name: "Light Air Tatsumaki Senpukyaku",
+      input: "j.214LK",
+      type: "special",
+    },
+    {
+      id: "jtatsumaki",
+      name: "Medium Air Tatsumaki Senpukyaku",
+      input: "j.214MK",
+      type: "special",
+    },
+    {
+      id: "jtatsumaki",
+      name: "Heavy Air Tatsumaki Senpukyaku",
+      input: "j.214HK",
+      type: "special",
+    },
+    {
+      id: "jtatsumaki",
+      name: "EX Air Tatsumaki Senpukyaku",
+      input: "j.214EXK",
+      type: "special",
+    },
+    {
+      id: "Sokutou",
+      name: "Joudan Sokutou Geri",
+      input: "41236K",
+      type: "special",
+    },
+
+    {
+      id: "Sokutou",
+      name: "Light Joudan Sokutou Geri",
+      input: "41236LK",
+      type: "special",
+    },
+    {
+      id: "Sokutou",
+      name: "Medium Joudan Sokutou Geri",
+      input: "41236MK",
+      type: "special",
+    },
+    {
+      id: "Sokutou",
+      name: "Heavy Joudan Sokutou Geri",
+      input: "41236HK",
+      type: "special",
+    },
+    {
+      id: "Sokutou",
+      name: "EX Joudan Sokutou Geri",
+      input: "41236EXK",
+      type: "special",
+    },
+  ],
+  "super arts": [
+    {
+      id: "denjin_hadoken",
+      name: "Denjin Hadoken",
+      input: "236236P",
+      type: "super",
+    },
+    {
+      id: "Shinkuu_hadoken",
+      name: "Shinkuu Hadoken",
+      input: "236236P",
+      type: "super",
+    },
+    {
+      id: "Shin_shoryuken",
+      name: "Shin Shoryuken",
+      input: "236236P",
+      type: "super",
+    },
+  ],
+};
