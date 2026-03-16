@@ -14,11 +14,22 @@ import {
   getNodesBounds,
   getViewportForBounds,
 } from "@xyflow/react";
-import { useCallback, useRef, useState, type DragEvent } from "react";
+import {
+  useCallback,
+  useRef,
+  useState,
+  type Dispatch,
+  type DragEvent,
+  type SetStateAction,
+} from "react";
 import { CondiditionNode, SituationNode, MoveNode } from "./nodes";
 import { Download, Trash2 } from "lucide-react";
 import { toPng } from "html-to-image";
 import "@xyflow/react/dist/style.css";
+import {
+  THIRD_STRIKE_CHARACTERS_MOVELIST,
+  type Character,
+} from "../data/moves/thirdstrike";
 
 const nodeTypes = {
   situation: SituationNode,
@@ -29,7 +40,13 @@ const nodeTypes = {
 const initialNodes: Node[] = [];
 const initialEdges: Edge[] = [];
 
-const FlowCanvas = () => {
+const FlowCanvas = ({
+  setCharacter,
+  character,
+}: {
+  setCharacter: Dispatch<SetStateAction<Character>>;
+  character: Character;
+}) => {
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState(initialEdges);
   const [reactFlowInstance, setReactFlowInstance] = useState<any>(null);
@@ -188,12 +205,19 @@ const FlowCanvas = () => {
           </Panel>
           <Panel position="top-right" className="flex gap-2">
             <select
-              id="cars"
+              id="characters"
+              value={character}
               className="flex bg-sky-600 text-zinc-100 py-2 px-4 gap-2 text-sm font-bold rounded-lg
                         items-center cursor-pointer transition-all"
+              onChange={(e) => {
+                setCharacter(e.target.value as Character);
+              }}
             >
-              <option value="Ryu">Ryu</option>
-              <option value="Ken">Ken</option>
+              {Object.entries(THIRD_STRIKE_CHARACTERS_MOVELIST).map(
+                (Movelist) => {
+                  return <option>{Movelist[0]}</option>;
+                },
+              )}
             </select>
             <button
               className="flex bg-emerald-600 text-zinc-100 py-2 px-4 gap-2 text-sm font-bold rounded-lg

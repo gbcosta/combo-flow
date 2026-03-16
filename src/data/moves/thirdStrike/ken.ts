@@ -2,7 +2,7 @@ import type { MoveList } from "../types";
 
 export const KEN_MOVES: MoveList = {
   "stand normals": [
-    { id: "lp", name: "Light Punch", input: "LP", type: "normal" },
+    { id: "lp", name: "Light1 Punch", input: "LP", type: "normal" },
     { id: "mp", name: "Medium Punch", input: "MP", type: "normal" },
     { id: "hp", name: "Heavy Punch", input: "HP", type: "normal" },
     { id: "lk", name: "Light Kick", input: "LK", type: "normal" },

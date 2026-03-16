@@ -1,9 +1,9 @@
 import { Target, Sword, HelpCircle, Info } from "lucide-react";
 import { THIRD_STRIKE_SITUATIONS } from "../data/situations";
 import { THIRD_STRIKE_CONDITIONS } from "../data/conditions";
-import { THIRD_STRIKE_MOVES } from "../data/moves/thirdstrike";
+import { THIRD_STRIKE_CHARACTERS_MOVELIST } from "../data/moves/thirdstrike";
 import type { DragEvent, ReactNode } from "react";
-import type { Move } from "../data/moves/types";
+import type { Character, Move } from "../data/moves/types";
 
 const onDragStart = (
   event: DragEvent,
@@ -56,45 +56,55 @@ const Category = ({
   );
 };
 
-const CategoryMoves = ({ name, icon }: { name: string; icon: ReactNode }) => {
+const CategoryMoves = ({
+  name,
+  icon,
+  character,
+}: {
+  name: string;
+  icon: ReactNode;
+  character: Character;
+}) => {
   return (
     <>
       <h2 className="font-bold  tracking-[0.2em] text-zinc-500 flex items-center gap-1 uppercase">
         {icon}
         {name}
       </h2>
-      {Object.entries(THIRD_STRIKE_MOVES.ryu).map((category) => {
-        return (
-          <div className="flex flex-col gap-2" key={category[0]}>
-            <h3 className="font-bold tracking-[0.2em] text-zinc-500 flex items-center gap-1 uppercase ml-2">
-              {category[0]}
-            </h3>
-            {category[1].map((move: Move, key: string) => {
-              return (
-                <div
-                  key={key}
-                  draggable
-                  className="bg-zinc-900 border border-zinc-800 text-zinc-200 text-sm py-2 px-3 rounded-sm
+      {Object.entries(THIRD_STRIKE_CHARACTERS_MOVELIST[character]).map(
+        (category) => {
+          return (
+            <div className="flex flex-col gap-2" key={category[0]}>
+              <h3 className="font-bold tracking-[0.2em] text-zinc-500 flex items-center gap-1 uppercase ml-2">
+                {category[0]}
+              </h3>
+              {category[1].map((move: Move, key: string) => {
+                return (
+                  <div
+                    key={key}
+                    draggable
+                    className="bg-zinc-900 border border-zinc-800 text-zinc-200 text-sm py-2 px-3 rounded-sm
                                 hover:border-violet-500/50 transition-colors cursor-grab flex flex-col"
-                  onDragStart={(e) =>
-                    onDragStart(e, "move", move.name, move.input)
-                  }
-                >
-                  <span>{move.name}</span>
-                  <span className="text-sm text-zinc-500 font-mono">
-                    {move.input}
-                  </span>
-                </div>
-              );
-            })}
-          </div>
-        );
-      })}
+                    onDragStart={(e) =>
+                      onDragStart(e, "move", move.name, move.input)
+                    }
+                  >
+                    <span>{move.name}</span>
+                    <span className="text-sm text-zinc-500 font-mono">
+                      {move.input}
+                    </span>
+                  </div>
+                );
+              })}
+            </div>
+          );
+        },
+      )}
     </>
   );
 };
 
-const Sidebar = () => {
+const Sidebar = ({ character }: { character: Character }) => {
   return (
     <aside
       className="max-w-96 w-72 bg-zinc-950 h-screen flex flex-col p-4 font-inter overflow-auto
@@ -108,7 +118,11 @@ const Sidebar = () => {
           hoverBorderColor="hover:border-emerald-500/50"
           nodeType="situation"
         />
-        <CategoryMoves name="Moves" icon={<Sword size={14} />} />
+        <CategoryMoves
+          name="Moves"
+          icon={<Sword size={14} />}
+          character={character}
+        />
         <Category
           name="conditions"
           icon={<HelpCircle size={14} />}
