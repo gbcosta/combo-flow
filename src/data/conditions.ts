@@ -4,4 +4,5 @@ export const THIRD_STRIKE_CONDITIONS = [
   "Distance Close",
   "Meter Available",
   "Parry",
+  "Options",
 ];
