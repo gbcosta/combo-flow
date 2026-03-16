@@ -200,7 +200,7 @@ const FlowCanvas = ({
               <span className="text-zinc-100">flow</span>
             </h1>
             <p className="font-inter text-zinc-500 text-xs font-black mt-1 tracking-widest">
-              Fighting Game Strategy Builder
+              Third Strike Strategy Builder
             </p>
           </Panel>
           <Panel position="top-right" className="flex gap-2">
