@@ -210,12 +210,16 @@ const FlowCanvas = ({
               className="flex bg-sky-600 text-zinc-100 py-2 px-4 gap-2 text-sm font-bold rounded-lg
                         items-center cursor-pointer transition-all"
               onChange={(e) => {
-                setCharacter(e.target.value as Character);
+                setCharacter(e.target.value.toLowerCase() as Character);
               }}
             >
               {Object.entries(THIRD_STRIKE_CHARACTERS_MOVELIST).map(
                 (Movelist) => {
-                  return <option>{Movelist[0]}</option>;
+                  return (
+                    <option value={Movelist[0]} key={Movelist[0]}>
+                      {Movelist[0].toUpperCase()}
+                    </option>
+                  );
                 },
               )}
             </select>

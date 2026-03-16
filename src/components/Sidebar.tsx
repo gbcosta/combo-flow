@@ -1,9 +1,12 @@
 import { Target, Sword, HelpCircle, Info } from "lucide-react";
 import { THIRD_STRIKE_SITUATIONS } from "../data/situations";
 import { THIRD_STRIKE_CONDITIONS } from "../data/conditions";
-import { THIRD_STRIKE_CHARACTERS_MOVELIST } from "../data/moves/thirdstrike";
+import {
+  THIRD_STRIKE_CHARACTERS_MOVELIST,
+  type Character,
+} from "../data/moves/thirdstrike";
 import type { DragEvent, ReactNode } from "react";
-import type { Character, Move } from "../data/moves/types";
+import type { Move } from "../data/moves/types";
 
 const onDragStart = (
   event: DragEvent,
