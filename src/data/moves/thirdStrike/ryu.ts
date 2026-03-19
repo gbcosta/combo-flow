@@ -60,8 +60,18 @@ export const RYU_MOVES: MoveList = {
     },
   ],
   universal: [
-    { id: "seoi", name: "Seoi Nage", input: "LP + LK", type: "special" },
-    { id: "tomoe", name: "Tomoe Nage", input: "4LP + LK", type: "special" },
+    {
+      id: "seoi",
+      name: "Seoi Nage (Throw)",
+      input: "LP + LK",
+      type: "special",
+    },
+    {
+      id: "tomoe",
+      name: "Tomoe Nage (Back Throw)",
+      input: "4LP + LK",
+      type: "special",
+    },
     {
       id: "uoh",
       name: "Universal Overhead",

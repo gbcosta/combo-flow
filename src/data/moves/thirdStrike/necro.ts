@@ -1,13 +1,9 @@
 import type { MoveList } from "../types";
-
-export const KEN_MOVES: MoveList = {
+export const NECRO_MOVES: MoveList = {
   "stand normals": [
-    { id: "clp", name: "Close LP", input: "c.LP", type: "normal" },
-    { id: "flp", name: "Far LP", input: "f.LP", type: "normal" },
-    { id: "cmp", name: "Close MP", input: "c.MP", type: "normal" },
-    { id: "fmp", name: "Far MP", input: "f.MP", type: "normal" },
-    { id: "chp", name: "Close HP", input: "c.HP", type: "normal" },
-    { id: "fhp", name: "Far HP", input: "f.HP", type: "normal" },
+    { id: "lp", name: "LP", input: "LP", type: "normal" },
+    { id: "mp", name: "MP", input: "MP", type: "normal" },
+    { id: "hp", name: "HP", input: "HP", type: "normal" },
     { id: "lk", name: "LK", input: "LK", type: "normal" },
     { id: "mk", name: "MK", input: "MK", type: "normal" },
     { id: "hk", name: "HK", input: "HK", type: "normal" },
@@ -42,20 +38,20 @@ export const KEN_MOVES: MoveList = {
   ],
   universal: [
     {
-      id: "hiza_geri",
-      name: "Hiza Geri (Throw)",
+      id: "shoulder_throw",
+      name: "Shoulder Attack (Throw)",
       input: "LP + LK",
       type: "special",
     },
     {
-      id: "seoi_nage",
-      name: "Seoi Nage (Forward Throw)",
-      input: "6LP + LK",
+      id: "back_throw",
+      name: "Frankensteiner (Back Throw)",
+      input: "4LP + LK",
       type: "special",
     },
     {
-      id: "jigoku_guruma",
-      name: "Jigoku Guruma (Back Throw)",
+      id: "german_throw",
+      name: "German Suplex (Back Throw)",
       input: "4LP + LK",
       type: "special",
     },
@@ -65,7 +61,12 @@ export const KEN_MOVES: MoveList = {
       input: "MP + MK",
       type: "special",
     },
-    { id: "taunt", name: "Taunt", input: "HP + HK", type: "special" },
+    {
+      id: "taunt",
+      name: "Taunt",
+      input: "HP + HK",
+      type: "special",
+    },
     { id: "parry", name: "Parry", input: "6", type: "special" },
     { id: "low_parry", name: "Low Parry", input: "2", type: "special" },
     { id: "dash", name: "Dash", input: "66", type: "special" },
@@ -83,160 +84,153 @@ export const KEN_MOVES: MoveList = {
     { id: "defense", name: "Defense", input: "4", type: "special" },
     { id: "low_defense", name: "Low Defense", input: "1", type: "special" },
   ],
-  "target combos": [
-    { id: "tc1", name: "TC (c.MP > HP)", input: "c.MP > HP", type: "normal" },
-  ],
+  "target combos": [],
   "command normals": [
-    {
-      id: "inazuma",
-      name: "Inazuma Kakato Wari (Short)",
-      input: "6MK",
-      type: "normal",
-    },
-    {
-      id: "hmk",
-      name: "Inazuma Kakato Wari (Long)",
-      input: "6[MK]",
-      type: "normal",
-    },
-    { id: "fumikomi", name: "Fumikomi Mae Geri", input: "6HK", type: "normal" },
-    {
-      id: "shiden",
-      name: "Shiden Kakato Otoshi",
-      input: "4HK",
-      type: "normal",
-    },
-    {
-      id: "shiden",
-      name: "Shiden Kakato Otoshi Feint",
-      input: "4[HK]",
-      type: "normal",
-    },
+    { id: "drill_lk", name: "Drill LK", input: "j.2LK", type: "normal" },
+    { id: "drill_mk", name: "Drill MK", input: "j.2MK", type: "normal" },
+    { id: "drill_hk", name: "Drill HK", input: "j.2HK", type: "normal" },
 
-    { id: "straight", name: "Straight", input: "6LP", type: "normal" },
+    { id: "blp", name: "Back LP", input: "4LP", type: "normal" },
+    { id: "bmp", name: "Back MP", input: "4MP", type: "normal" },
+    { id: "bhp", name: "Back HP", input: "4HP", type: "normal" },
+
+    { id: "blk", name: "Back LK", input: "4LK", type: "normal" },
+    { id: "bmk", name: "Back MK", input: "4MK", type: "normal" },
+    { id: "bhk", name: "Knee Missile", input: "4HK", type: "normal" },
+
+    { id: "1hp", name: "Elbow Cannon", input: "1HP", type: "normal" },
   ],
   "special moves": [
-    { id: "hado", name: "Hadouken", input: "236P", type: "special" },
+    // ELECTRIC SHOCK
     {
-      id: "hadou_lp",
-      name: "Ligh Hadouken",
-      input: "236LP",
-      type: "special",
-    },
-    {
-      id: "hadou_mp",
-      name: "Medium Hadoken",
-      input: "236MP",
-      type: "special",
-    },
-    {
-      id: "hadou_hp",
-      name: "Heavy Hadoken",
-      input: "236HP",
-      type: "special",
-    },
-    { id: "hadou_ex", name: "EX Hadouken", input: "236PP", type: "special" },
-
-    { id: "shoryuken", name: "Shouryuken", input: "623P", type: "special" },
-    {
-      id: "shoryuken_lp",
-      name: "Light Shouryuken",
+      id: "electric_lp",
+      name: "LP Electric Shock",
       input: "623LP",
       type: "special",
     },
     {
-      id: "shoryuken_mp",
-      name: "Medium Shouryken",
+      id: "electric_mp",
+      name: "MP Electric Shock",
       input: "623MP",
       type: "special",
     },
     {
-      id: "shoryuken_hp",
-      name: "Heavy Shouryken",
+      id: "electric_hp",
+      name: "HP Electric Shock",
       input: "623HP",
       type: "special",
     },
+
+    // SNAKE FANG
     {
-      id: "shoryuken_ex",
-      name: "EX Shouryuken",
-      input: "623PP",
+      id: "snake_lk",
+      name: "LK Snake Fang",
+      input: "41236LK",
+      type: "special",
+    },
+    {
+      id: "snake_mk",
+      name: "MK Snake Fang",
+      input: "41236MK",
+      type: "special",
+    },
+    {
+      id: "snake_hk",
+      name: "HK Snake Fang",
+      input: "41236HK",
       type: "special",
     },
 
+    // SPINNING PUNCH
     {
-      id: "tatsumaki",
-      name: "Tatsumaki Senpukyaku",
-      input: "214K",
+      id: "spinning_lp",
+      name: "LP Spinning Punch",
+      input: "41236LP",
       type: "special",
     },
     {
-      id: "tatsumaki_lk",
-      name: "Light Tatsumaki",
+      id: "spinning_mp",
+      name: "MP Spinning Punch",
+      input: "41236MP",
+      type: "special",
+    },
+    {
+      id: "spinning_hp",
+      name: "HP Spinning Punch",
+      input: "41236HP",
+      type: "special",
+    },
+    {
+      id: "spinning_ex",
+      name: "EX Spinning Punch",
+      input: "41236PP",
+      type: "special",
+    },
+
+    // FLYING VIPER
+    {
+      id: "viper_lp",
+      name: "LP Flying Viper",
+      input: "214LP",
+      type: "special",
+    },
+    {
+      id: "viper_mp",
+      name: "MP Flying Viper",
+      input: "214MP",
+      type: "special",
+    },
+    {
+      id: "viper_hp",
+      name: "HP Flying Viper",
+      input: "214HP",
+      type: "special",
+    },
+    {
+      id: "viper_ex",
+      name: "EX Flying Viper",
+      input: "214PP",
+      type: "special",
+    },
+
+    // RAGING COBRA
+    {
+      id: "cobra_lk",
+      name: "LK Raging Cobra",
       input: "214LK",
       type: "special",
     },
     {
-      id: "tatsumaki_mk",
-      name: "Medium Tatsumaki",
+      id: "cobra_mk",
+      name: "MK Raging Cobra",
       input: "214MK",
       type: "special",
     },
     {
-      id: "tatsumaki_hk",
-      name: "Heavy Tatsumaki",
+      id: "cobra_hk",
+      name: "HK Raging Cobra",
       input: "214HK",
       type: "special",
     },
     {
-      id: "tatsumaki_ex",
-      name: "EX Tatsumaki",
+      id: "cobra_ex",
+      name: "EX Raging Cobra",
       input: "214KK",
-      type: "special",
-    },
-
-    {
-      id: "jtatsumaki",
-      name: "Air Tatsumaki",
-      input: "j.214K",
-      type: "special",
-    },
-    {
-      id: "jtatsumaki_lk",
-      name: "Light Air Tatsumaki",
-      input: "j.214LK",
-      type: "special",
-    },
-    {
-      id: "jtatsumaki_mk",
-      name: "Medium Air Tatsumaki",
-      input: "j.214MK",
-      type: "special",
-    },
-    {
-      id: "jtatsumaki_hk",
-      name: "Heavy Air Tatsumaki",
-      input: "j.214HK",
-      type: "special",
-    },
-    {
-      id: "jtatsumaki_ex",
-      name: "EX Air Tatsumaki",
-      input: "j.214KK",
       type: "special",
     },
   ],
   "super arts": [
     {
       id: "sa1",
-      name: "Shouryuu Reppa (SA1)",
+      name: "Magnetic Storm (SA1)",
       input: "236236P",
       type: "super",
     },
-    { id: "sa2", name: "Shinryuu Ken (SA2)", input: "236236P", type: "super" },
+    { id: "sa2", name: "Slam Dance (SA2)", input: "236236P", type: "super" },
     {
       id: "sa3",
-      name: "Shippuujinrai Kyaku (SA3)",
-      input: "236236K",
+      name: "Electric Snake (SA3)",
+      input: "236236P",
       type: "super",
     },
   ],
