@@ -4,8 +4,7 @@
 
 ## ✨ Features
 
-* **Node-Based Canvas:** Leverages **React Flow** to create a highly interactive and draggable interface for mapping movements.
-* **Custom Move Logic:** Define specific data structures for different types of moves and transitions found in `src/data/moves`.
+* **Movesets:** **Characters Movesets** nodes.
 
 ## 🛠️ Tech Stack
 
