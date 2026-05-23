@@ -3,10 +3,16 @@
 **Combo Flow** is a dynamic web application built with React, Vite, and React Flow. It provides an intuitive, node-based interface to visualize, create, and manage complex movement sequences or "combos" in a flow-chart style.
 
 [Combo FLow](https://combo-flow.vercel.app/)
+![portfolio index page](/public/home.png)
+
 
 ## ✨ Features
 
-* **Movesets:** **Characters Movesets** nodes.
+* **Node-Based Strategy Builder:** Visualize combo routes, pressure sequences, and situational decision trees using an intuitive drag-and-drop node interface.
+* **Fighting Game Situations:** Start your flow from specific tactical states, such as *Opponent in Corner*, *Opponent Jumping*, *Neutral*, or *Wake-up (Oki)*.
+* **Character-Specific Movesets:** Dynamically load frame-accurate inputs and move properties (like Close/Far Normals: `c.MP`, `f.HP`, etc.) mapped specifically to the selected character (e.g., Ryu).
+* **Interactive Canvas:** Seamless zooming, panning, and locking controls provided by the React Flow engine for an optimal editing experience.
+* **Export Strategy:** Save your custom flowcharts directly as PNG images to share setups and tech with the fighting game community.
 
 ## 🛠️ Tech Stack
 
@@ -17,13 +23,6 @@
 * **Linting:** [ESLint](https://eslint.org/)
 
 ---
-
-## 🚧 Under Construction
-
-The project is currently in active development. The following features are planned for future updates:
-
-* **Download Image:** Change characters to open new nodes to use.
-
 ## 🚀 Getting Started
 
 ### Prerequisites
