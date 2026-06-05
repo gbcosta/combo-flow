@@ -9,6 +9,10 @@
 [![Bun](https://img.shields.io/badge/Bun-Runtime-000000?style=for-the-badge&logo=bun)](https://bun.sh/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
 
+[Combo FLow](https://combo-flow.vercel.app/)
+
+![portfolio index page](/public/home.png)
+
 ---
 
 ## ⚡ What is Combo Flow?
