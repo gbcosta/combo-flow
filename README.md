@@ -1,5 +1,5 @@
 # Combo Flow 🚀🎮
-> **Unleash your tactical fighting game potential.** Create, visualize, and map out frame-accurate movement sequences, situational decision trees, and pressure routes with an interactive node-based flowchart canvas.
+> **Unleash your tactical Street Fighter III: 3rd Strike potential.** Create, visualize, and map out frame-accurate movement sequences, situational decision trees, and pressure routes with an interactive node-based flowchart canvas.
 
 [![Built with Vite](https://img.shields.io/badge/Vite-7.x-646CFF?style=for-the-badge&logo=vite)](https://vitejs.dev/)
 [![React](https://img.shields.io/badge/React-19.x-61DAFB?style=for-the-badge&logo=react)](https://react.dev/)
@@ -17,7 +17,7 @@
 
 ## ⚡ What is Combo Flow?
 
-In fighting games, success is built on split-second decision making, optimal combos, and situational awareness. **Combo Flow** is a specialized flowchart canvas designed for theorycrafters, coaches, and competitive players. It lets you visually construct tactical decision trees for legendary titles like **Street Fighter III: 3rd Strike**.
+In fighting games, success is built on split-second decision making, optimal combos, and situational awareness. **Combo Flow** is a specialized flowchart canvas designed for theorycrafters, coaches, and competitive players. It lets you visually construct tactical decision trees for **Street Fighter III: 3rd Strike**.
 
 Instead of writing down combos in complex notation text lines, you can map them dynamically into flows showing exactly what to do when your opponent blocks, jumps, or wakes up.
 
